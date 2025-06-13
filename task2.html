@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MITS Internship Portal</title>
+  <style>
+    :root {
+      --primary: #1d4ed8;
+      --text: #1f2937;
+      --light: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: var(--text);
+      transition: margin-left 0.3s ease;
+    }
+
+    /* Sticky Banner */
+    .sticky-banner {
+      position: sticky;
+      top: 50px; 
+      left: 0;
+      background: var(--primary);
+      color: white;
+      padding: 10px 20px;
+      font-weight: bold;
+      z-index: 998;
+      display: inline-block;
+      border-bottom-right-radius: 8px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100%;
+      background-color: var(--light);
+      padding: 20px;
+      transition: left 0.3s ease;
+      z-index: 1000;
+      box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .sidebar.open {
+      left: 0;
+    }
+
+    .sidebar h2 {
+      font-size: 22px;
+      margin-bottom: 25px;
+      color: var(--primary);
+    }
+
+    .sidebar a {
+      display: block;
+      margin: 15px 0;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 17px;
+    }
+
+    .sidebar a:hover, .sidebar a:focus {
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      position: fixed;
+      top: 10px;
+      left: 15px;
+      width: 30px;
+      height: 25px;
+      cursor: pointer;
+      z-index: 1100;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .hamburger span {
+      height: 4px;
+      background: var(--primary);
+      border-radius: 2px;
+    }
+
+    /* Content */
+    .content {
+      padding: 120px 30px 30px 30px; /* Extra top padding to clear sticky and hamburger */
+      max-width: 960px;
+      margin-left: 0;
+      transition: margin-left 0.3s ease;
+    }
+
+    .sidebar.open ~ .content {
+      margin-left: 260px;
+    }
+
+    .section {
+      padding: 40px 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    p {
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary);
+    }
+
+    @media (max-width: 600px) {
+      .sidebar {
+        width: 220px;
+      }
+      .sidebar.open ~ .content {
+        margin-left: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hamburger Menu -->
+  <div class="hamburger" id="hamburger" tabindex="0" aria-label="Toggle menu" role="button">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- Sticky Banner -->
+  <div class="sticky-banner">📌 Apply for Internship</div>
+
+  <!-- Sidebar -->
+  <nav class="sidebar" id="sidebar" aria-label="Sidebar Navigation">
+    <h2>MITS Menu</h2>
+    <a href="#apply">Internship Application</a>
+    <a href="#offer">Offer Letter Generator</a>
+    <a href="#certificate">Certificate Verification</a>
+    <a href="#join">Join Our Team</a>
+    <a href="#contact">Contact Info</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="content" id="main-content">
+    <section class="section" id="apply">
+      <h2>Internship Application</h2>
+      <p>Join our tech-driven internship program at MITS and gain real-world experience under expert mentors. We offer projects in web development, data science, UI/UX, and AI/ML to help students build strong portfolios.</p>
+    </section>
+
+    <section class="section" id="offer">
+      <h2>Offer Letter Generator</h2>
+      <p>Once selected, generate your official MITS internship offer letter with a single click. Every offer includes project details, duration, and mentor information — instantly downloadable as PDF.</p>
+    </section>
+
+    <section class="section" id="certificate">
+      <h2>Certificate Verification</h2>
+      <p>MITS provides QR-verified internship certificates that can be validated by universities and recruiters. Each certificate contains a unique verification ID and is linked to your internship history.</p>
+    </section>
+
+    <section class="section" id="join">
+      <h2>Join Our Team</h2>
+      <p>Are you passionate about tech, design, or marketing? Apply to become a campus ambassador or core team member at MITS. Lead local events, manage projects, and represent us in your college community.</p>
+    </section>
+
+    <section class="section" id="contact">
+      <h2>Contact Information</h2>
+      <p>Email: <a href="mailto:hello@mits.org">hello@mits.org</a></p>
+      <p>Phone: +91 90000 12345</p>
+      <p>LinkedIn: <a href="#">linkedin.com/company/mits</a></p>
+    </section>
+  </main>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+
+    hamburger.addEventListener('click', () => {
+      sidebar.classList.toggle('open');
+      document.querySelector('.content').classList.toggle('open');
+    });
+
+    // Keyboard support
+    hamburger.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        sidebar.classList.toggle('open');
+        document.querySelector('.content').classList.toggle('open');
+      }
+    });
+  </script>
+</body>
+</html>
